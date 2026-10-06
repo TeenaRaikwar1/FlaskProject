@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightblue;
+        }
+
+        form {
+            background-color: white;
+            width: 400px;
+            padding: 25px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        input {
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        input[type="number"],
+        input[type="text"],
+        input[type="email"] {
+            width: 200px;
+        }
+
+        input[type="submit"] {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: darkgreen;
+        }
+    </style>
+
+</head>
+<body>
+
+    <center>
+        <h1>Employee Form</h1>
+
+        <form method="POST">
+            id:<input type="number" name="id"><br><br><br>
+
+            name:<input type="text" name="name"><br><br><br>
+
+            email:<input type="email" name="email"><br><br><br>
+
+            salary:<input type="number" name="sal" step="0.01"><br><br><br>
+
+            department:<input type="text" name="department" required><br><br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </center>
+
+    <script src="" async defer></script>
+
+</body>
+</html>

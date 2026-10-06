@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Data</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightblue;
+        }
+
+        h1 {
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            background-color: white;
+            width: 80%;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        th {
+            background-color: green;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        a {
+            background-color: blue;
+            color: white;
+            padding: 7px 12px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: darkblue;
+        }
+
+        button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkred;
+        }
+
+        ul {
+            color: green;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<center>
+    <h1>Employee Data</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <table border="1">
+
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>Department</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+
+        {% for employee in empdata %}
+
+        <tr>
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.salary }}</td>
+            <td>{{ employee.department }}</td>
+
+            <!-- UPDATE -->
+            <td>
+                <a href="{{ url_for('update_employee', id=employee.id) }}">
+                    Update
+                </a>
+            </td>
+
+            <!-- DELETE -->
+            <td>
+                <form action="{{ url_for('delete_employee', id=employee.id) }}"
+                      method="POST">
+
+                    <button type="submit">Delete</button>
+
+                </form>
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</center>
+
+</body>
+</html>
